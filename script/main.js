@@ -39,10 +39,10 @@ function breakdown(ms) {
 
 function remainingText(r) {
   return "There are " +
-    r.days + "days " +
-    r.hours + "hours " +
-    r.minutes + "minutes " +
-    r.seconds + "seconds left this year."
+    r.days + " days " +
+    r.hours + " hours " +
+    r.minutes + " minutes " +
+    r.seconds + " seconds left this year."
 }
 
 function viewModel(d) {
