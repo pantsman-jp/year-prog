@@ -45,15 +45,24 @@ function remainingText(r) {
     r.seconds + " seconds left this year."
 }
 
+function progressText(ratio) {
+  return (Math.round(ratio * 1000) / 10).toFixed(1) + "%"
+}
+
 function viewModel(d) {
+  var ratio = progressRatio(d)
   return {
-    ratio: progressRatio(d),
+    ratio: ratio,
+    percentLeft: ratio * 100,
+    progress: progressText(ratio),
     text: remainingText(breakdown(remainingMillis(d)))
   }
 }
 
 function render(vm) {
-  document.getElementById("progress").style.width = (vm.ratio * 100) + "%"
+  document.getElementById("progress").style.width = vm.percentLeft + "%"
+  document.getElementById("percent").style.left = vm.percentLeft + "%"
+  document.getElementById("percent").textContent = vm.progress
   document.getElementById("remaining").textContent = vm.text
 }
 
