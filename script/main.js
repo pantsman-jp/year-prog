@@ -2,11 +2,11 @@ function now() {
   return new Date()
 }
 
-function yearStart(d) {
+function year_start(d) {
   return new Date(d.getFullYear(), 0, 1)
 }
 
-function yearEnd(d) {
+function year_end(d) {
   return new Date(d.getFullYear() + 1, 0, 1)
 }
 
@@ -14,48 +14,48 @@ function clamp(x, min, max) {
   return Math.min(Math.max(x, min), max)
 }
 
-function progressRatio(d) {
+function prog_ratio(d) {
   return clamp(
-    (d - yearStart(d)) / (yearEnd(d) - yearStart(d)),
+    (d - year_start(d)) / (year_end(d) - year_start(d)),
     0,
     1
   )
 }
 
-function remainingMillis(d) {
-  return yearEnd(d) - d
+function remain(d) {
+  return year_end(d) - d
 }
 
 function breakdown(ms) {
-  var totalSeconds = Math.max(0, Math.floor(ms / 1000))
-  var seconds = totalSeconds % 60
-  var totalMinutes = Math.floor(totalSeconds / 60)
-  var minutes = totalMinutes % 60
-  var totalHours = Math.floor(totalMinutes / 60)
-  var hours = totalHours % 24
-  var days = Math.floor(totalHours / 24)
-  return { days: days, hours: hours, minutes: minutes, seconds: seconds }
+  var total_seconds = Math.max(0, Math.floor(ms / 1000))
+  var ss = total_seconds % 60
+  var total_minutes = Math.floor(total_seconds / 60)
+  var mm = total_minutes % 60
+  var total_hours = Math.floor(total_minutes / 60)
+  var hh = total_hours % 24
+  var dd = Math.floor(total_hours / 24)
+  return { dd: dd, hh: hh, mm: mm, ss: ss }
 }
 
-function remainingText(r) {
+function remain_txt(r) {
   return "There are " +
-    r.days + " days " +
-    r.hours + " hours " +
-    r.minutes + " minutes " +
-    r.seconds + " seconds left this year."
+    r.dd + " days " +
+    r.hh + " hours " +
+    r.mm + " minutes " +
+    r.ss + " seconds left this year."
 }
 
-function progressText(ratio) {
+function prog_txt(ratio) {
   return (Math.round(ratio * 1000) / 10).toFixed(1) + "%"
 }
 
-function viewModel(d) {
-  var ratio = progressRatio(d)
+function view(d) {
+  var ratio = prog_ratio(d)
   return {
     ratio: ratio,
     percentLeft: ratio * 100,
-    progress: progressText(ratio),
-    text: remainingText(breakdown(remainingMillis(d)))
+    progress: prog_txt(ratio),
+    text: remain_txt(breakdown(remain(d)))
   }
 }
 
@@ -67,7 +67,7 @@ function render(vm) {
 }
 
 function tick() {
-  render(viewModel(now()))
+  render(view(now()))
 }
 
 tick()
