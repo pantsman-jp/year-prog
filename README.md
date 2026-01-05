@@ -7,7 +7,6 @@
 ## Usage
 1. Clone or download this repository.
 2. Open `index.html` in a web browser.
-3. The progress bar and remaining time will update automatically.
 
 ---
 Copyright (c) 2026 pantsman
