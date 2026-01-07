@@ -49,18 +49,27 @@ function prog_txt(ratio) {
   return (Math.round(ratio * 1000) / 10).toFixed(1) + "%"
 }
 
+function prog_color(ratio) {
+  var r = Math.round(200 * ratio)
+  var g = Math.round(200 * (1 - ratio))
+  return "rgb(" + r + "," + g + ",0)"
+}
+
 function view(d) {
   var ratio = prog_ratio(d)
   return {
     ratio: ratio,
     percentLeft: ratio * 100,
     progress: prog_txt(ratio),
+    color: prog_color(ratio),
     text: remain_txt(breakdown(remain(d)))
   }
 }
 
 function render(vm) {
-  document.getElementById("progress").style.width = vm.percentLeft + "%"
+  var bar = document.getElementById("progress")
+  bar.style.width = vm.percentLeft + "%"
+  bar.style.backgroundColor = vm.color
   document.getElementById("percent").style.left = vm.percentLeft + "%"
   document.getElementById("percent").textContent = vm.progress
   document.getElementById("remaining").textContent = vm.text
