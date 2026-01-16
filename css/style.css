@@ -15,6 +15,7 @@ body {
   width: 100%;
   max-width: 90%;
   text-align: center;
+  position: relative;
 }
 
 .bar {
@@ -39,5 +40,16 @@ body {
 
 #remaining {
   margin-top: 16px;
-  font-size: 16px;
+  font-size: 20px;
+}
+
+#datetime {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -250%);
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
 }

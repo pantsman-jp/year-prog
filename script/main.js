@@ -77,6 +77,17 @@ function render(vm) {
 
 function tick() {
   render(view(now()))
+  document.getElementById("datetime").textContent = datetime_txt(new Date())
+}
+
+function datetime_txt(d) {
+  var y = d.getFullYear()
+  var m = String(d.getMonth() + 1).padStart(2, "0")
+  var day = String(d.getDate()).padStart(2, "0")
+  var h = String(d.getHours()).padStart(2, "0")
+  var min = String(d.getMinutes()).padStart(2, "0")
+  var s = String(d.getSeconds()).padStart(2, "0")
+  return y + "-" + m + "-" + day + " " + h + ":" + min + ":" + s
 }
 
 tick()
