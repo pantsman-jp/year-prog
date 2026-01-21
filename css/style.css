@@ -43,13 +43,28 @@ body {
   font-size: 20px;
 }
 
-#datetime {
+#datetime-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -250%);
+}
+
+#datetime {
+  cursor: pointer;
+  user-select: all;
   font-size: 32px;
   font-weight: 600;
   letter-spacing: 0.05em;
   white-space: nowrap;
+}
+
+#copy-btn {
+  font-size: 0.9em;
+  padding: 2px 6px;
+  cursor: pointer;
 }

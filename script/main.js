@@ -87,8 +87,17 @@ function datetime_txt(d) {
   var h = String(d.getHours()).padStart(2, "0")
   var min = String(d.getMinutes()).padStart(2, "0")
   var s = String(d.getSeconds()).padStart(2, "0")
-  return y + "-" + m + "-" + day + " " + h + ":" + min + ":" + s
+  var offsetMin = -d.getTimezoneOffset()
+  var sign = offsetMin >= 0 ? "+" : "-"
+  var absMin = Math.abs(offsetMin)
+  var offH = String(Math.floor(absMin / 60)).padStart(2, "0")
+  var offM = String(absMin % 60).padStart(2, "0")
+  return y + "-" + m + "-" + day + " " + h + ":" + min + ":" + s +
+    " (UTC " + sign + offH + ":" + offM + ")"
 }
 
 tick()
 setInterval(tick, 1000)
+document.getElementById("copy-btn").addEventListener("click", function () {
+  navigator.clipboard.writeText(document.getElementById("datetime").textContent)
+})

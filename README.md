@@ -11,8 +11,8 @@ until the end of the year in days, hours, minutes, and seconds.
 
 ## Usage
 1. Clone this repository:
-  ```bash
-  git clone https://github.com/pantsman-jp/year-prog.git
+  ```
+  git clone https://github.com/pantsman-jp/year-prog
   ```
 2. Open `index.html` in a web browser.
 
