@@ -64,7 +64,28 @@ body {
 }
 
 #copy-btn {
+  position: relative;
   font-size: 0.9em;
   padding: 2px 6px;
   cursor: pointer;
+}
+
+#copy-toast {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 6px;
+  background: white;
+  color: black;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+#copy-toast.show {
+  opacity: 1;
 }

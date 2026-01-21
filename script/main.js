@@ -98,6 +98,16 @@ function datetime_txt(d) {
 
 tick()
 setInterval(tick, 1000)
-document.getElementById("copy-btn").addEventListener("click", function () {
-  navigator.clipboard.writeText(document.getElementById("datetime").textContent)
+
+var copyBtn = document.getElementById("copy-btn")
+var toast = document.getElementById("copy-toast")
+
+copyBtn.addEventListener("click", function () {
+  var text = document.getElementById("datetime").textContent
+  navigator.clipboard.writeText(text).then(function () {
+    toast.classList.add("show")
+    setTimeout(function () {
+      toast.classList.remove("show")
+    }, 1200)
+  })
 })
